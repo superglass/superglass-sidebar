@@ -1,13 +1,31 @@
 :root {
-	--sidebar-left-width: 15.625rem;
-	--sidebar-right-width: 275px;
-	--sidebar-left-bg: #111;
-	--sidebar-right-bg: black;
-    --sidebars-container-bg: black;
-    --overlay-open-bg: white;
+	/* Default values */
+	--default-sidebar-left-width: 15.625rem;
+	--default-sidebar-right-width: 275px;
+	--default-sidebar-left-bg: #111;
+	--default-sidebar-right-bg: black;
+    --default-sidebars-container-bg: black;
+    --default-overlay-open-bg: white;
+	
+	/* Theming values 
+	--superglass-sidebar-left-width: 15.625rem;
+	--superglass-sidebar-right-width: 275px;
+	--superglass-sidebar-left-bg: #111;
+	--superglass-sidebar-right-bg: black;
+    --superglass-sidebars-container-bg: black;
+    --superglass-overlay-open-bg: white;
+	*/
+	
+	/* Effective values */
+	--effective-sidebar-left-width: var(--superglass-sidebar-left-width, var(--default-sidebar-left-width));
+	--effective-sidebar-right-width: var(--superglass-sidebar-right-width, var(--default-sidebar-right-width));
+	--effective-sidebar-left-bg: var(--superglass-sidebar-left-bg, var(--default-sidebar-left-bg));
+	--effective-sidebar-right-bg: var(--superglass-sidebar-right-bg, var(--default-sidebar-right-bg));
+    --effective-sidebars-container-bg: var(--superglass-sidebars-container-bg, var(--default-sidebars-container-bg));
+    --effective-overlay-open-bg: var(--superglass-overlay-open-bg, var(--default-overlay-open-bg));
 }
 
-.inner-wrap, .left-sidebar, .off-canvas-wrap, .right-sidebar {
+.inner-wrap, .left-sidebar, .sidebar-container, .right-sidebar {
 	-webkit-backface-visibility: initial;
 }
 
@@ -23,11 +41,11 @@
 }
 
 .open-right > .inner-wrap {
-	transform: translate(-var(--sidebar-right-width), 0);
+	transform: translate(-var(--effective-sidebar-right-width), 0);
 }
 
 .open-left > .inner-wrap {
-	transform: translate(var(--sidebar-left-width), 0);
+	transform: translate(var(--effective-sidebar-left-width), 0);
 }
 
 .overflow-sidebar.open-right > .inner-wrap, 
@@ -42,12 +60,12 @@
 }
 
 .left-sidebar {
-	width: var(--sidebar-left-width);
+	width: var(--effective-sidebar-left-width);
 	top: 0;
 	bottom: 0;
 	position: absolute;
 	overflow-y: auto;
-	background: var(--sidebar-left-bg);
+	background: var(--effective-sidebar-left-bg);
 	z-index: 1001;
 	box-sizing: content-box;
 	transition: transform 500ms ease 0s;
@@ -65,12 +83,12 @@
 }
 
 .right-sidebar {
-	width: var(--sidebar-right-width);
+	width: var(--effective-sidebar-right-width);
 	top: 0;
 	bottom: 0;
 	position: absolute;
 	overflow-y: auto;
-	background: var(--sidebar-right-bg);
+	background: var(--effective-sidebar-right-bg);
 	z-index: 1001;
 	box-sizing: content-box;
 	transition: transform 500ms ease 0s;
@@ -92,30 +110,30 @@
 }
 
 .overflow-sidebar.open-left > .inner-wrap > .exit-off-canvas {
-	transform: translate3d(var(--sidebar-left-width), 0, 0);
+	transform: translate(var(--effective-sidebar-left-width), 0);
 	transition: transform 400ms ease;
 }
 
 .overflow-sidebar.open-right > .inner-wrap > .exit-off-canvas {
-	transform: translate3d(-var(--sidebar-right-width), 0, 0);
+	transform: translate(-var(--effective-sidebar-right-width), 0);
 	transition: transform 400ms ease;
 }
 
 
-.off-canvas-wrap {
+.sidebar-container {
 	position: relative;
 	width: 100%;
 	overflow: auto;
     overflow-x: hidden;
     -webkit-overflow-scrolling: touch;
-	background: var(--sidebars-container-bg);
+	background: var(--effective-sidebars-container-bg);
     display: none;
 }
-.off-canvas-wrap.loaded {
+.sidebar-container.loaded {
     display: block;
 }
 
-.off-canvas-wrap.open-right, .off-canvas-wrap.open-left {
+.sidebar-container.open-right, .sidebar-container.open-left {
 	min-height: 100%;
 	-webkit-overflow-scrolling: touch;
 }
@@ -132,7 +150,7 @@
     box-shadow: -4px 0 4px rgba(0,0,0,.5),4px 0 4px rgba(0,0,0,.5);
     display: block;
     position: absolute;
-    background: color(var(--overlay-open-bg) alpha(20%));
+    background: color(var(--effective-overlay-open-bg) alpha(20%));
     top: 0;
     bottom: 0;
     left: 0;
@@ -144,7 +162,7 @@
 @media only screen and (min-width: 40.063em) {
     .open-left .exit-off-canvas:hover,
 	.open-right .exit-off-canvas:hover {
-        background:color(var(--overlay-open-bg) alpha(5%));
+        background:color(var(--effective-overlay-open-bg) alpha(5%));
     }
 }
 
