@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="">
+
+<head>
+    <meta charset="utf-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Superglass sidebar</title>
+    <link rel="stylesheet" href="../build/sidebar.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.3.0/knockout-min.js"></script>
+    <script type="text/javascript">
+      var model = {
+        currentPanel: ko.observable(),
+        open: function (mode) {
+          this.currentPanel(mode);
+        },
+        close: function () {
+          this.currentPanel(null);
+        }
+      };
+      document.addEventListener("DOMContentLoaded", function () {
+        ko.applyBindings(model);
+      });
+    </script>
+    <style>
+      body, a {
+        color: white;
+      }
+    </style>
+</head>
+
+<body>
+  <div id="offcanvas" class="overflow-sidebar off-canvas-wrap" 
+    style="display: block;" 
+    data-bind="css: {'open-left': currentPanel() == 'left', 'open-right': currentPanel() == 'right'}">
+    <div class="inner-wrap">
+      <aside class="left-sidebar">
+        <div>Left block</div>
+        <a href="#" data-bind="click: close">Close panel</a>
+      </aside>
+      <aside class="right-sidebar">
+        <div>Right block</div>
+        <a href="#" data-bind="click: close">Close panel</a>
+      </aside>
+      <div class="view-container fullscreen">
+        Main content
+		
+        <a href="#" data-bind="click: open.bind($data, 'left')">Left panel open</a>
+        <a href="#" data-bind="click: open.bind($data, 'right')">Right open</a>
+      </div>
+      <a class="exit-off-canvas" data-bind="click: close"></a>
+    </div>
+  </div>
+</body>
+</html>
