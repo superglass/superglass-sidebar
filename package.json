@@ -1,0 +1,28 @@
+{
+  "name": "superglass-sidebar",
+  "version": "0.1.0",
+  "description": "Sidebar for Super Glass UI framework",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/superglass/superglass-sidebar.git"
+  },
+  "keywords": [
+    "superglass"
+  ],
+  "devDependencies": {
+    "cssnano": "^2.6.1",
+    "cssnext": "^1.8.3",
+    "gulp": "^3.9.0",
+    "gulp-postcss": "^6.0.0"
+  },
+  "author": "Andrey Kurdyumov <kant2002@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/superglass/superglass-sidebar/issues"
+  },
+  "homepage": "https://github.com/superglass/superglass-sidebar#readme"
+}

@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="">
+
+<head>
+    <meta charset="utf-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Superglass sidebar</title>
+    <link rel="stylesheet" href="../build/sidebar.css">
+    <script type="text/javascript">
+      var currentPanel;
+      function openPanel(mode) {
+        var offcanvas = document.getElementById("offcanvas");
+        if (mode === "left") {
+          offcanvas.classList.add("open-left");
+        }
+        if (mode === "right") {
+          offcanvas.classList.add("open-right");
+        }
+        
+        currentPanel = mode;
+        return false;
+      }
+      function closePanel(mode) {
+        var offcanvas = document.getElementById("offcanvas");
+        if (mode === "left") {
+          offcanvas.classList.remove("open-left");
+        }
+        if (mode === "right") {
+          offcanvas.classList.remove("open-right");
+        }
+        
+        return false;
+      }
+      function closeCurrentPanel() {
+        return closePanel(currentPanel);
+      }
+    </script>
+    <style>
+      body, a {
+        color: white;
+      }
+    </style>
+</head>
+
+<body>
+  <div id="offcanvas" class="overflow-sidebar off-canvas-wrap" style="display: block;">
+    <div class="inner-wrap">
+      <aside class="left-off-canvas-menu">
+        <div>Left block</div>
+        <a href="#" onclick="closePanel('left');return false;">Close panel</a>
+      </aside>
+      <aside class="right-off-canvas-menu">
+        <div>Right block</div>
+        <a href="#" onclick="closePanel('right');return false;">Close panel</a>
+      </aside>
+      <div class="view-container fullscreen">
+        Main content
+		
+        <a href="#" onclick="openPanel('left');return false;">Left panel open</a>
+        <a href="#" onclick="openPanel('right');return false;">Right open</a>
+      </div>
+      <a class="exit-off-canvas" onclick="closeCurrentPanel();return false;"></a>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,20 @@
+{
+  "name": "superglass-sidebar",
+  "version": "0.1.0",
+  "homepage": "https://github.com/superglass/superglass-sidebar",
+  "authors": [
+    "Andrey Kurdyumov <kant2002@gmail.com>"
+  ],
+  "description": "Sidebar for Super Glass UI framework",
+  "keywords": [
+    "superglass"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
